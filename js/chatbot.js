@@ -59,3 +59,45 @@ ${p.description}`).join("\n")
 };
 
 const fallback = "Hmm, I'm not sure about that yet 🤔. Try asking about my skills, education, projects, or how to contact me!";
+
+// ---------- 3. Find the best rule-based reply ----------
+// Each topic gets a score = how many of its keywords appear. Highest score wins.
+function getReply(userText) {
+const text = userText.toLowerCase();
+const words = text.split(/[^a-z0-9-]+/); // "What's your skill?" → ["what","s","your","skill",""]
+let bestTopic = null;
+let bestScore = 0;
+for (const topic in qa) {
+let score = 0;
+for (const keyword of qa[topic].keywords) {
+const found = keyword.includes(" ")
+? text.includes(keyword) // phrase: "good at"
+: words.some(w => w === keyword || (keyword.length >= 4 && w.startsWith(keyword))); // "skill" →
+"skills"
+if (found) score++;
+}
+if (score > bestScore) {
+bestScore = score;
+bestTopic = topic;
+}
+}
+return bestTopic ? qa[bestTopic].answer : fallback;
+}
+
+// ---------- 4. Ask the AI (our own server — the API key is NOT in this file!) ----------
+let aiAvailable = USE_AI;
+async function getAIReply(userText) {
+const response = await fetch("/api/chat", {
+method: "POST",
+headers: { "Content-Type": "application/json" },
+body: JSON.stringify({ message: userText }),
+signal: AbortSignal.timeout(20000)
+});
+// 404/405 = no server function (e.g. Live Server); 500 = key not set up yet.
+// Stop trying the AI for this visit. 429 (busy) = just use the backup this time.
+if ([404, 405, 500, 501].includes(response.status)) aiAvailable = false;
+if (!response.ok) throw new Error("API error " + response.status);
+const data = await response.json();
+if (!data.reply) throw new Error("Empty reply");
+return data.reply;
+}
