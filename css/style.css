@@ -240,3 +240,4 @@ box-shadow: var(--shadow); display: none;
 .float-card { font-size: 0.8rem; }
 .chat-panel { right: 0.75rem; left: 0.75rem; width: auto; bottom: 5.5rem; height: calc(100vh - 7.5rem); }
 .chat-launcher { right: 1rem; bottom: 1rem; }
+}
