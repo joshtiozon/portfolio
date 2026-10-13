@@ -102,3 +102,38 @@ transition: transform 0.3s, opacity 0.3s; }
 .menu-btn[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .menu-btn[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
+/* ---------- 5. Hero ---------- */
+.hero { position: relative; overflow: hidden; padding: 5rem 0 6rem; }
+.hero-bg {
+position: absolute; inset: 0; pointer-events: none;
+background:
+radial-gradient(320px circle at 80% 50%, var(--glow-1), transparent 70%),
+radial-gradient(300px circle at 8% 50%, var(--glow-2), transparent 70%);
+animation: glow 10s ease-in-out infinite alternate;
+}
+@keyframes glow { from { opacity: 0.75; } to { opacity: 1; } }
+.hero-inner { position: relative; display: grid; grid-template-columns: 1.3fr 1fr; gap: 3rem; align-items:
+center; }
+.eyebrow { font-weight: 700; color: var(--accent); margin: 0 0 0.5rem; }
+.hero h1 { font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 800; letter-spacing: -0.02em; }
+.tagline { font-size: clamp(1.05rem, 2.2vw, 1.25rem); color: var(--muted); max-width: 34rem; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1.8rem 0; }
+.hero-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; list-style: none; padding: 0; margin: 0; }
+.hero-badges li { background: var(--surface); border: 1px solid var(--border); padding: 0.35rem 0.85rem;
+border-radius: 999px; font-size: 0.9rem; font-weight: 600; }
+.hero-art { position: relative; display: grid; place-items: center; min-height: 320px; }
+.avatar-ring { padding: 8px; border-radius: 50%; background: var(--gradient); box-shadow: var(--shadow);
+animation: float 6s ease-in-out infinite; }
+.avatar {
+width: clamp(180px, 24vw, 260px); aspect-ratio: 1; border-radius: 50%;
+display: grid; place-items: center; background: var(--surface);
+font-size: clamp(3rem, 7vw, 5rem); font-weight: 800; color: var(--accent);
+}
+.float-card {
+position: absolute; background: var(--surface); border: 1px solid var(--border);
+padding: 0.55rem 0.9rem; border-radius: 12px; font-weight: 700; font-size: 0.9rem;
+box-shadow: var(--shadow); animation: float 7s ease-in-out infinite;
+}
+.fc1 { top: 12%; left: 0; }
+.fc2 { bottom: 10%; right: 0; animation-delay: -3s; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
