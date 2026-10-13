@@ -7,6 +7,16 @@
 <title>Juan Dela Cruz | Portfolio</title>
 <meta name="description" content="Portfolio of Juan Dela Cruz, Grade 12 student and aspiring web
 developer.">
+
+<!-- Set the theme BEFORE the page draws, so there's no white flash in dark mode -->
+<script>
+(function () {
+var saved = localStorage.getItem("theme");
+var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+document.documentElement.dataset.theme = saved || (prefersDark ? "dark" : "light");
+})();
+</script>
+
 <!-- Google Font: Plus Jakarta Sans -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
