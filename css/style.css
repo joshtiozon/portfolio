@@ -221,6 +221,10 @@ background: var(--gradient); box-shadow: 0 20px 50px rgba(99, 102, 241, 0.35);
 .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; }
 .footer p { margin: 0; }
 
+/* ---------- 7. Scroll-reveal animation ---------- */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
 /* ---------- 9. Responsive (tablets & phones) ---------- */
 @media (max-width: 860px) {
 .hero { padding: 3rem 0 4rem; }
@@ -240,4 +244,11 @@ box-shadow: var(--shadow); display: none;
 .float-card { font-size: 0.8rem; }
 .chat-panel { right: 0.75rem; left: 0.75rem; width: auto; bottom: 5.5rem; height: calc(100vh - 7.5rem); }
 .chat-launcher { right: 1rem; bottom: 1rem; }
+}
+
+/* ---------- 10. Respect "reduce motion" settings ---------- */
+@media (prefers-reduced-motion: reduce) {
+*, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto
+!important; }
+.reveal { opacity: 1; transform: none; }
 }
