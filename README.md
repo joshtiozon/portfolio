@@ -55,4 +55,4 @@ it can be revoked.
 HTML, CSS (variables, Grid, Flexbox, media queries), JavaScript (ES modules, DOM, fetch), Vercel,
 OpenRouter (optional)
 ## Author
-Juan Dela Cruz (example). ✏️ Replace with your name. Grade 12 Work Immersion Intern, 2026
+Josh Abraham Tiozon. Grade 12 Work Immersion Intern, 2026
