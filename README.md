@@ -1,7 +1,7 @@
 # Portfolio Starter (HTML · CSS · JavaScript + Chatbot)
 A modern, responsive personal portfolio with a floating chatbot.
-The sample content is for a fictional student, **Juan Dela Cruz**. Replace it with your own.
-**Live site:** https://<your-project>.vercel.app ← ✏️ update after deploying
+The sample content is for a fictional student, **Josh Abraham Tiozon**. Replace it with your own.
+**Live site:** https://portfolio-dun-rho-96.vercel.app/
 ## Features
 - Sticky navbar, mobile hamburger menu, smooth scrolling, active-link highlight
 - Hero with gradient accents, About, Skills chips, Education timeline, Project cards, Contact, Footer
@@ -32,7 +32,7 @@ footer
 - [ ] `data/profile.js`: every value (name, education, skills, projects, hobbies, goals, contact)
 - [ ] `css/style.css`: try new `--accent`, `--accent-2` colors (light **and** dark)
 - [ ] `js/chatbot.js`: add more keywords to `qa` (English + Taglish)
-- [ ] Logo initials ("JD") and the chat title ("Juan's Assistant")
+- [ ] Logo initials ("JD") and the chat title ("Josh's Assistant")
 - [ ] ⚠️ No home address, phone number, birthday, school ID, or private photos. Everything here is public.
 ## 3. Deploy to Vercel (free Hobby plan)
 1. Push this folder to a GitHub repo named `portfolio`.
