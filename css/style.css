@@ -5,11 +5,11 @@ Portfolio Starter — style.css
 ========================================================= */
 /* ---------- 1. Theme variables ---------- */
 :root {
-    --accent: #6366f1;
+    --accent: #35ff02;
     /* main color (indigo) */
-    --accent-2: #ec4899;
+    --accent-2: #174912;
     /* second color for gradients (pink) */
-    --accent-3: #06b6d4;
+    --accent-3: #00ff26c1;
     /* third color (cyan) */
     --gradient: linear-gradient(135deg, var(--accent), var(--accent-2));
     --bg: #f8fafc;
@@ -31,9 +31,9 @@ Portfolio Starter — style.css
 }
 
 [data-theme="dark"] {
-    --accent: #818cf8;
-    --accent-2: #f472b6;
-    --accent-3: #22d3ee;
+    --accent: #f14202;
+    --accent-2: #530808;
+    --accent-3: #ee2222;
     --bg: #0b1020;
     --bg-alt: #111833;
     --surface: #151c34;
