@@ -13,13 +13,13 @@ const profile = {
     education: [
         {
             level: "Senior High School — ICT Strand",
-            school: "Sample Senior High School",
+            school: "Eclaro Academy Senior High School",
             years: "2025 – 2027",
             details: "Grade 12. Favorite subjects: programming and web design."
         },
         {
             level: "Junior High School",
-            school: "Sample National High School",
+            school: "Holy Spirit National High School",
             years: "2021 – 2025",
             details: "Joined the computer club and helped make the school event page."
         }
@@ -43,7 +43,7 @@ const profile = {
             tech: ["JavaScript"]
         }
     ],
-    hobbies: ["drawing", "mobile games", "playing basketball"],
+    hobbies: ["guitarist, mobile games, playing basketball"],
     goals: "I want to take up Computer Science in college and become a full-stack developer.",
     ojt: "Work immersion intern (developer) with a software & AI dev team, Oct 12–30, 2026.",
     contact: {
