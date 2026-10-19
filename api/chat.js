@@ -1,58 +1,98 @@
 
-try {
-  const aiResponse = await fetch(
-    "https://openrouter.ai/api/v1/chat/completions",
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "nvidia/nemotron-3-super-120b-a12b:free",
-        messages: [
-          { role: "system", content: systemPrompt },
-          { role: "user", content: message },
-        ],
-        max_tokens: 200,
-        temperature: 0.3,
-      }),
-      signal: AbortSignal.timeout(60000),
+import profile from "../data/profile.js";
+
+const MODEL =
+    process.env.OPENROUTER_MODEL ||
+    "nvidia/nemotron-3-super-120b-a12b:free";
+
+export default async function handler(req, res) {
+    if (req.method !== "POST") {
+        return res.status(405).json({ error: "Use POST" });
     }
-  );
 
-  const data = await aiResponse.json();
+    const apiKey = process.env.OPENROUTER_API_KEY;
 
-  if (!aiResponse.ok) {
-    // Log the provider's error on the server, not your API key.
-    console.error("OpenRouter error:", {
-      status: aiResponse.status,
-      error: data.error,
-    });
+    if (!apiKey) {
+        console.error("OPENROUTER_API_KEY is missing");
+        return res.status(500).json({
+            error: "Server is missing the API key",
+        });
+    }
 
-    return res.status(502).json({
-      error: "AI is busy or unavailable",
-    });
-  }
+    const message = String(req.body?.message ?? "")
+        .trim()
+        .slice(0, 800);
 
-  const reply = data.choices?.[0]?.message?.content?.trim();
+    if (!message) {
+        return res.status(400).json({
+            error: "Empty message",
+        });
+    }
 
-  if (!reply) {
-    console.error("OpenRouter returned no text:", data);
+    const systemPrompt = `
+You are a friendly chatbot on Josh's portfolio website.
+Answer only using the portfolio information below when
+discussing Josh's background, skills, education, or projects.
+If the information is missing, say you don't know.
+Keep answers short, clear, and professional.
 
-    return res.status(502).json({
-      error: "AI gave an empty reply",
-    });
-  }
+PORTFOLIO INFORMATION:
+${JSON.stringify(profile, null, 2)}
+`;
 
-  return res.status(200).json({ reply });
-} catch (error) {
-  console.error("AI request failed:", {
-    name: error.name,
-    message: error.message,
-  });
+    try {
+        const aiResponse = await fetch(
+            "https://openrouter.ai/api/v1/chat/completions",
+            {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${apiKey}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    model: MODEL,
+                    messages: [
+                        { role: "system", content: systemPrompt },
+                        { role: "user", content: message },
+                    ],
+                    max_tokens: 300,
+                    temperature: 0.3,
+                }),
+                signal: AbortSignal.timeout(60000),
+            }
+        );
 
-  return res.status(502).json({
-    error: "Could not reach the AI",
-  });
+        const data = await aiResponse.json();
+
+        if (!aiResponse.ok) {
+            console.error("OpenRouter error:", {
+                status: aiResponse.status,
+                error: data.error,
+            });
+
+            return res.status(502).json({
+                error: "AI is busy or unavailable",
+            });
+        }
+
+        const reply = data.choices?.[0]?.message?.content?.trim();
+
+        if (!reply) {
+            console.error("OpenRouter returned no text");
+            return res.status(502).json({
+                error: "AI gave an empty reply",
+            });
+        }
+
+        return res.status(200).json({ reply });
+    } catch (error) {
+        console.error("AI request failed:", {
+            name: error.name,
+            message: error.message,
+        });
+
+        return res.status(502).json({
+            error: "Could not reach the AI",
+        });
+    }
 }
