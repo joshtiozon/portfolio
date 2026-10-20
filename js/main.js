@@ -66,5 +66,21 @@ revealObserver.unobserve(entry.target); // animate only once
 });
 }, { threshold: 0.12 });
 document.querySelectorAll(".reveal").forEach(function (el) { revealObserver.observe(el); });
-// ---------- 6. Current year in the footer ----------
+// ---------- 6. Hero glow background on hover ----------
+const heroBg = document.querySelector(".hero-bg");
+const heroElements = document.querySelectorAll(".hero-text, .hero-art, .hero-cta, .hero-badges");
+
+function showHeroGlow() {
+    if (heroBg) heroBg.classList.add("visible");
+}
+function hideHeroGlow() {
+    if (heroBg) heroBg.classList.remove("visible");
+}
+
+heroElements.forEach(function (el) {
+    el.addEventListener("mouseenter", showHeroGlow);
+    el.addEventListener("mouseleave", hideHeroGlow);
+});
+
+// ---------- 7. Current year in the footer ----------
 document.getElementById("year").textContent = new Date().getFullYear();
