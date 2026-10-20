@@ -3,7 +3,7 @@
 import profile from "../data/profile.js";
 // Free model id. Model ids change! Check openrouter.ai/models?max_price=0
 // You can override it with an OPENROUTER_MODEL env var in Vercel (no code change).
-const MODEL = process.env.OPENROUTER_MODEL || "google/gemma-4-31b-it:free";
+const MODEL = process.env.OPENROUTER_MODEL || "nvidia/nemotron-3.5-super-vl:free";
 export default async function handler(req, res) {
     if (req.method !== "POST") {
         return res.status(405).json({ error: "Use POST" });
