@@ -7,6 +7,8 @@ Redesigned cards & widgets, interactive buttons, SVG icons.
     --accent: #35ff02;
     --accent-2: #174912;
     --accent-3: #00ff26c1;
+    --accent-4: #4d9446;
+    --accent-5: #35ff02;
     --gradient: linear-gradient(135deg, var(--accent), var(--accent-2));
     --bg: #f8fafc;
     --bg-alt: #f1f5f9;
@@ -30,6 +32,8 @@ Redesigned cards & widgets, interactive buttons, SVG icons.
     --accent: #f14202;
     --accent-2: #530808;
     --accent-3: #ee2222;
+    --accent-4: #7e3232;
+    --accent-5: #f14202;
     --bg: #090b14;
     --bg-alt: #0f172a;
     --surface: #151c34;
@@ -373,9 +377,9 @@ h3 {
     opacity: 0.15;
 }
 
-.hero-inner:hover ~ .hero-bg,
-.hero-text:hover ~ .hero-bg,
-.hero-art:hover ~ .hero-bg,
+.hero-inner:hover~.hero-bg,
+.hero-text:hover~.hero-bg,
+.hero-art:hover~.hero-bg,
 .hero-bg:hover {
     opacity: 0.3;
 }
@@ -384,6 +388,7 @@ h3 {
     from {
         opacity: 0.6;
     }
+
     to {
         opacity: 1;
     }
@@ -503,10 +508,12 @@ h3 {
 }
 
 @keyframes float {
+
     0%,
     100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-10px);
     }
@@ -783,15 +790,15 @@ h3 {
 }
 
 .t1 {
-    background: linear-gradient(180deg, var(--accent-2), var(--accent));
+    background: linear-gradient(180deg, var(--accent-4), var(--accent-5));
 }
 
 .t2 {
-    background: linear-gradient(180deg, var(--accent-2), var(--accent));
+    background: linear-gradient(180deg, var(--accent-4), var(--accent-5));
 }
 
 .t3 {
-    background: linear-gradient(180deg, var(--accent-2), var(--accent)); 
+    background: linear-gradient(180deg, var(--accent-4), var(--accent-5));
 }
 
 .project-body {
@@ -813,7 +820,7 @@ h3 {
     flex-wrap: wrap;
     gap: 0.4rem;
     list-style: none;
-    padding: 0;                 
+    padding: 0;
     margin: 0.5rem 0 1rem;
 }
 
@@ -1017,6 +1024,7 @@ h3 {
         opacity: 0;
         transform: translateY(20px) scale(0.95);
     }
+
     to {
         opacity: 1;
         transform: none;
@@ -1070,8 +1078,15 @@ h3 {
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.6; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
 }
 
 .chat-close {
@@ -1160,11 +1175,13 @@ h3 {
 }
 
 @keyframes bounce {
+
     0%,
     60%,
     100% {
         transform: translateY(0);
     }
+
     30% {
         transform: translateY(-3px);
     }
@@ -1331,6 +1348,7 @@ h3 {
 
 /* ---------- 16. Respect "reduce motion" ---------- */
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -1338,6 +1356,7 @@ h3 {
         transition: none !important;
         scroll-behavior: auto !important;
     }
+
     .reveal {
         opacity: 1;
         transform: none;
