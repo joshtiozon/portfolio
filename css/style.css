@@ -183,15 +183,22 @@ h3 {
     color: #fff;
     border-color: transparent;
     box-shadow: 0 0 25px var(--glow-strong);
+    display: inline-flex;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    position: relative;
 }
 
 .btn-primary:hover {
     box-shadow: 0 0 45px var(--glow-strong);
     transform: translateY(-3px);
+    border: 1px solid var(--border);
 }
 
 .btn-primary:active {
     transform: translateY(0);
+    box-shadow: 0 0 15px var(--glow-strong);
 }
 
 .btn-ghost {
@@ -776,15 +783,15 @@ h3 {
 }
 
 .t1 {
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    background: linear-gradient(180deg, var(--accent-2), var(--accent));
 }
 
 .t2 {
-    background: linear-gradient(135deg, var(--accent-3), var(--accent));
+    background: linear-gradient(180deg, var(--accent-2), var(--accent));
 }
 
 .t3 {
-    background: linear-gradient(135deg, #f59e0b, var(--accent-2));
+    background: linear-gradient(180deg, var(--accent-2), var(--accent)); 
 }
 
 .project-body {
@@ -806,7 +813,7 @@ h3 {
     flex-wrap: wrap;
     gap: 0.4rem;
     list-style: none;
-    padding: 0;
+    padding: 0;                 
     margin: 0.5rem 0 1rem;
 }
 

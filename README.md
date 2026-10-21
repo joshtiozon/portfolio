@@ -1,6 +1,6 @@
 # Portfolio Starter (HTML · CSS · JavaScript + Chatbot)
 A modern, responsive personal portfolio with a floating chatbot.
-The sample content is for a fictional student, **Josh Abraham Tiozon**. Replace it with your own.
+The sample content is for a fictional student, **Josh Abraham Tiozon**.
 **Live site:** https://portfolio-dun-rho-96.vercel.app/
 ## Features
 - Sticky navbar, mobile hamburger menu, smooth scrolling, active-link highlight
@@ -9,7 +9,7 @@ The sample content is for a fictional student, **Josh Abraham Tiozon**. Replace 
 - Subtle scroll animations (turned off automatically for "reduce motion" users)
 - Floating chatbot with typing dots and quick-reply buttons
 - **Basic mode:** a rule-based bot (keywords → answers), always works
-- **AI mode (optional):** a free OpenRouter model via a Vercel serverless function (`api/chat.js`)
+- **AI mode:** a free OpenRouter model via a Vercel serverless function (`api/chat.js`)
 ## Files
 | File | What it is | Edit it? |
 |---|---|---|
@@ -53,6 +53,6 @@ uses Basic mode automatically.
 it can be revoked.
 ## Built with
 HTML, CSS (variables, Grid, Flexbox, media queries), JavaScript (ES modules, DOM, fetch), Vercel,
-OpenRouter (optional)
+OpenRouter
 ## Author
 Josh Abraham Tiozon. Grade 12 Work Immersion Intern, 2026
